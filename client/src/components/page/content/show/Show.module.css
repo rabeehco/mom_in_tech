@@ -1,0 +1,56 @@
+.dashboard{
+    height: auto; 
+    width: 100%;
+    display: flex;
+}
+
+.dashboard h1{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.dashboardOne {
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F5F6FA;
+    flex-direction: column;
+}
+
+.dashboardTwo {
+    width: 20%;
+    height: 90%; 
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputDiv{
+    width: 70%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createInput{
+    width: 80%;
+    height: 70%;
+}
+
+.createInput:focus{
+    box-shadow: none !important;
+    border: 1px solid #c4baf4 !important;
+}
+
+.blog{
+    background-color: white;
+    height: auto;
+    width: 70%;
+    cursor: pointer;
+}

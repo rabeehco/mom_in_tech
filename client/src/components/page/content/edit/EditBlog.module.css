@@ -1,0 +1,50 @@
+.dashboard{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.dashboard h1{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.dashboardOne {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F5F6FA;
+    flex-direction: column;
+}
+
+.titleDiv{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyDiv{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputMain{
+    width: 80%;
+    height: 70%;
+}
+
+.blog{
+    background-color: white;
+    height: auto;
+    width: 70%;
+}

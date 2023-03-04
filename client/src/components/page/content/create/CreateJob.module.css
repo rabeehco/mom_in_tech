@@ -1,0 +1,95 @@
+.dashboard{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    /* flex-direction: row; */
+}
+
+.dashboard h1{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.dashboardOne {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F5F6FA;
+    flex-direction: column;
+}
+
+.dashboardTwo {
+    width: 20%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titleDiv{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyDiv{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createJobInput{
+  box-shadow: none !important;
+}
+
+.blog{
+    background-color: white;
+    height: auto;
+    width: 70%;
+}
+
+
+
+.createPostBtn {
+    background-color: #333954 !important;
+    border: none;
+    box-shadow: none !important;
+}
+
+.createPostBtn:focus {
+    background-color: #4a4a4d !important;
+}
+
+.createPostBtn:hover {
+    background-color: #4a4a4d !important;
+}
+
+.createPostBtn:active {
+    background-color: #4a4a4d !important;
+    border: none !important;
+}
+
+.cancelBtn {
+    background-color: rgb(220, 53, 69);
+    border: none;
+    box-shadow: none !important;
+}
+
+.cancelBtn:focus {
+    background-color: rgba(220, 53, 69, 0.8) !important;
+}
+
+.cancelBtn:hover {
+    background-color: rgba(220, 53, 69, 0.8) !important;
+}

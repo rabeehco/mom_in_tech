@@ -1,0 +1,35 @@
+.signupButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    -webkit-box-shadow: 10px 10px 21px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 21px -15px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 21px -15px rgba(0,0,0,0.75);
+    text-decoration: none;
+    list-style: none;
+}
+
+.navbarStyle{
+    background-color: #C4BAF4;
+    color: black;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 18px;
+    height: 9%; /* siuuuuu */
+}
+
+.navbarColor{
+    color: black;
+    text-decoration: none;
+    list-style: none;
+}
+
+.navbarInput {
+    width: 400px;
+}
+

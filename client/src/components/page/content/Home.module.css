@@ -1,0 +1,14 @@
+.home{
+    height: 90%;
+    width: 100%;
+}
+
+.paragraph {
+    line-height: 40px;    
+}
+
+.flexcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
