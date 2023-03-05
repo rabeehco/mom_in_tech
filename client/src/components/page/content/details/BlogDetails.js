@@ -11,6 +11,7 @@ import { blogActions } from "../../../store/blog";
 import { authActions } from "../../../store/auth";
 import { getABlog } from "../../../../service/MomintechApi";
 import { deleteBlog } from "../../../../service/MomintechApi";
+import { SkeletonOfBlog } from "../../../../service/SkeletonFiller";
 
 function PostDetails() {
   const dispatch = useDispatch()
@@ -52,15 +53,16 @@ function PostDetails() {
   return (
 
     <div className={classes.dashboard}>
+      {console.log(singleBlog)}
       <div className={classes.dashboardOne}>
-
-        <div className={`${classes.blog} mt-4`}>
-          <Card>
+        <div className={`${classes.blog} mt-4`}>          
+            {singleBlog._id ? <Card>
             <Card.Body>
               <Card.Title>
                 <h2>{singleBlog?.title}</h2>
               </Card.Title>
-              <Card.Text>{singleBlog.body ? parseBody(singleBlog?.body) : Array(4).fill(0).map(() => <Skeleton />)}</Card.Text>
+              {/* Array(12).fill(0).map(() => <Skeleton />) */}
+              <Card.Text>{singleBlog.body ? parseBody(singleBlog?.body) : null}</Card.Text>
               <Card.Subtitle className='mt-4'>
                 {singleBlog.username === userName ? (
                   <Button
@@ -81,7 +83,8 @@ function PostDetails() {
                 ) : null}
               </Card.Subtitle>
             </Card.Body>
-          </Card>
+          </Card> : <>{SkeletonOfBlog}</> }
+           
         </div>
 
       </div>

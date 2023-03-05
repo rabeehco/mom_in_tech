@@ -5,6 +5,7 @@ import React, { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, Navigate } from 'react-router-dom'
 import classes from './CreateEvent.module.css'
+import { createEvent } from '../../../../service/MomintechApi';
 
 function Event() {
 
@@ -19,28 +20,19 @@ function Event() {
 
 
     const createPostHandler = async () => {
-        try {
-            await fetch(`${host}/event`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: titleRef.current.value,
-                    description: descriptionRef.current.value,
-                    location: locationRef.current.value,
-                    link: linkRef.current.value,
-                    username: userName
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${isAuth}`
-                }
-            })
 
+        const title = titleRef.current.value
+        const description = descriptionRef.current.value
+        const location = locationRef.current.value
+        const link = linkRef.current.value
+
+        const data = await createEvent({host, title, description, location, link, userName, isAuth})
+        
+        if (data.status){
             alert('Successfully Created a Post')
-            navigate('/event')
-
-        } catch (e) {
-            alert('Failed to Create Post')
+            return navigate('/event')
         }
+        navigate('/event')
     }
     const cancelHandler = () => {
         navigate('/event')

@@ -7,8 +7,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import classes from './Details.module.css'
 import { deleteEvent } from '../../../../service/MomintechApi';
 import { getAEvent } from '../../../../service/MomintechApi';
+import  {SkeletonOfEvent} from '../../../../service/SkeletonFiller'
 
 function EventDetails() {
+
     const params = useParams()
     const { eventId } = params
     const isAuth = useSelector(state => state.auth.token)
@@ -51,6 +53,7 @@ function EventDetails() {
         <div className={classes.dashboard}>
             <div className={classes.dashboardOne}>
                 <div className={`${classes.blog} mt-4`}>
+           {event.length != 0 ? 
                     <Card>
                         <Card.Body>
                             <Card.Title><h2>{event.title}</h2></Card.Title>
@@ -64,9 +67,9 @@ function EventDetails() {
                             </div>
                         </Card.Body>
                     </Card>
-                </div>
-            </div>
-  
+             : <>{SkeletonOfEvent}</> } 
+             </div>
+  </div>
         </div>
     )
 }

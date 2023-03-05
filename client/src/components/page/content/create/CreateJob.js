@@ -5,6 +5,7 @@ import React, { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, Navigate } from 'react-router-dom'
 import classes from './CreateJob.module.css'
+import { createJob } from '../../../../service/MomintechApi';
 
 function Job() {
 
@@ -17,27 +18,17 @@ function Job() {
     const userName = useSelector(state => state.auth.username)
 
     const createPostHandler = async () => {
-        try {
-             await fetch(`${host}/job`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: titleRef.current.value,
-                    description: descriptionRef.current.value,
-                    email: emailRef.current.value,
-                    username: userName
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${isAuth}`
-                }
-            })
+        const title = titleRef.current.value;
+        const description = descriptionRef.current.value;
+        const email = emailRef.current.value;
+        
+        const data = await createJob({ title, description, email, userName, isAuth, host })
 
+        if (data.status) {
             alert('Successfully Created a Post')
-            navigate('/job')
-
-        } catch (e) {
-            alert('Failed to Create Post')
+            return navigate('/job')
         }
+            navigate('/job') 
     }
 
     useEffect(() => {
@@ -59,7 +50,7 @@ function Job() {
                 <div className="d-flex justify-content-start align-items-start w-75 mb-1">
                 </div>
                 <div className={`${classes.titleDiv} w-75`}>
-                <h2 className='mt-3 fw-bold'>Create a Job Post</h2>
+                    <h2 className='mt-3 fw-bold'>Create a Job Post</h2>
                     <Form.Control
                         ref={titleRef}
                         placeholder="Title"
@@ -88,7 +79,7 @@ function Job() {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }

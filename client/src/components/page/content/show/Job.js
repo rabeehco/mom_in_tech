@@ -6,33 +6,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import classes from './Show.module.css'
 import { authActions } from '../../../store/auth'
-import Skeleton from "@mui/material/Skeleton";
 import { getAllJob } from '../../../../service/MomintechApi';
+import { SkeletonOfJob } from '../../../../service/SkeletonFiller';
 
 function Job() {
-
-    const SkeletonOfBlog = (
-
-        <div className={`${classes.blog} mt-4`}>
-          <Card>
-            <Card.Body>
-              <Card.Title>
-                <h2>
-                  <Skeleton width="220px" animation="wave" />
-                </h2>
-              </Card.Title>
-              <Card.Text>
-                <>
-                  <Skeleton animation="wave" /> <Skeleton animation="wave" />
-                  <Skeleton animation="wave" />
-                </>
-              </Card.Text>
-              <Card.Subtitle></Card.Subtitle>
-            </Card.Body>
-          </Card>
-        </div>
-    
-      );
 
     const navigate = useNavigate()
     const isAuth = useSelector(state => state.auth.token)
@@ -88,7 +65,7 @@ function Job() {
                         </Card>
                     </div>
 
-                }) : <> {SkeletonOfBlog}{SkeletonOfBlog}{SkeletonOfBlog}</> }
+                }) : <> <div className={`${classes.blog} mt-4`}> {SkeletonOfJob}{SkeletonOfJob}{SkeletonOfJob} </div> </> }
                 <div className="mb-5"></div>
             </div>
         </div>

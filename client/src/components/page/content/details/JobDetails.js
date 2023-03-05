@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import classes from './Details.module.css'
 import { deleteJob } from '../../../../service/MomintechApi';
 import { getAJob } from '../../../../service/MomintechApi';
+import { SkeletonOfJob } from '../../../../service/SkeletonFiller';
 
 
 function JobDetails() {
@@ -45,9 +46,9 @@ function JobDetails() {
 
     return (
         <div className={classes.dashboard}>
-            <div className={classes.dashboardOne}>
+            <div className={classes.dashboardOne}>            
                 <div className={`${classes.blog} mt-4`}>
-                    <Card >
+                   {job._id ? <Card > 
                         <Card.Body>
                             <Card.Title><h2>{job.title}</h2></Card.Title>
                             <Card.Text onClick={() => { navigate(`/job/${job._id}`) }}>
@@ -60,10 +61,9 @@ function JobDetails() {
                                 {isUser ? <Button onClick={deleteHandler} variant="danger">Delete</Button> : null}
                             </div>
                         </Card.Body>
-                    </Card>
+                    </Card> : <>{SkeletonOfJob}</>}
                 </div>
-            </div>
-            \
+            </div>            
         </div>
     )
 }

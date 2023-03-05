@@ -42,6 +42,26 @@ export const userRegister = async ({ host, username, email, password }) => {
 }
 
 // Blog API
+export const createBlog = async ({ host, title, userName, body, isAuth }) => {
+    try {
+        const data = await fetch(`${host}/blog`, {
+            method: 'POST',
+            body: JSON.stringify({
+                title: title,
+                body: body,
+                username: userName
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${isAuth}`
+            }
+        })
+
+        return data;
+    } catch (error) {
+        alert('Failed to Create Post' + error.message)
+    }
+}
 
 export const getAllBlog = async (host) => {
     try {
@@ -116,6 +136,30 @@ export const deleteBlog = async ({ host, blogId, isAuth }) => {
 }
 
 // Event API
+export const createEvent = async ({ host, title, description, location, link, userName, isAuth }) => {
+    try {
+        const data = await fetch(`${host}/event`, {
+            method: 'POST',
+            body: JSON.stringify({
+                title: title,
+                description: description,
+                location: location,
+                link: link,
+                username: userName
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${isAuth}`
+            }
+        })
+
+        return data;
+
+    } catch (error) {
+        alert('Failed to Create Post')
+    }
+}
+
 export const getAllEvent = async ({ host, isAuth }) => {
     try {
         const response = await fetch(`${host}/event`, {
@@ -176,6 +220,29 @@ export const deleteEvent = async ({ host, eventId, isAuth }) => {
 }
 
 // Job API
+export const createJob = async ({ host, title, description, email, userName, isAuth }) => {
+    try {
+        const data = await fetch(`${host}/job`, {
+            method: 'POST',
+            body: JSON.stringify({
+                title: title,
+                description: description,
+                email: email,
+                username: userName
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${isAuth}`
+            }
+        })
+
+        return data;
+    } catch (error) {
+        alert('Failed to Create Post')
+        // return {status: false};
+    }
+}
+
 export const getAllJob = async ({ host, isAuth }) => {
     try {
         const response = await fetch(`${host}/job`, {
@@ -233,10 +300,10 @@ export const deleteJob = async ({ host, jobId, isAuth }) => {
 
 
 // Navigation Bar API
-export const fetchSearchQueryData = async ({host, text, path }) => {
+export const fetchSearchQueryData = async ({ host, text, path }) => {
     if (text) {
         const response = await fetch(`${host}/search${path}?title=${text}`)
-        
+
         const data = await response.json()
         return data;
     }

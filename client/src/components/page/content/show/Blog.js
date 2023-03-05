@@ -11,6 +11,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { authActions } from "../../../store/auth";
 import { blogActions } from "../../../store/blog";
 import { getAllBlog } from "../../../../service/MomintechApi";
+import { SkeletonOfBlog } from "../../../../service/SkeletonFiller";
 
 function Blog() {
 
@@ -19,28 +20,6 @@ function Blog() {
   const isAuth = useSelector((state) => state.auth.token);
   const blogList = useSelector((state) => state.blog.blogList);
   const dispatch = useDispatch();
-  const SkeletonOfBlog = (
-
-    <div className={`${classes.blog} mt-4`}>
-      <Card>
-        <Card.Body>
-          <Card.Title>
-            <h2>
-              <Skeleton width="220px" animation="wave" />
-            </h2>
-          </Card.Title>
-          <Card.Text>
-            <>
-              <Skeleton animation="wave" /> <Skeleton animation="wave" />
-              <Skeleton animation="wave" />
-            </>
-          </Card.Text>
-          <Card.Subtitle></Card.Subtitle>
-        </Card.Body>
-      </Card>
-    </div>
-
-  );
 
   useEffect(() => {
     (async function () {
@@ -110,7 +89,7 @@ function Blog() {
               </Card>
             </div>
           );
-        }) : <> {SkeletonOfBlog}{SkeletonOfBlog}{SkeletonOfBlog}</>}
+        }) : <div className={`${classes.blog} mt-4`}> {SkeletonOfBlog}{SkeletonOfBlog}{SkeletonOfBlog}</div>}
         <div className="mb-5"></div>
       </div>
     </div>

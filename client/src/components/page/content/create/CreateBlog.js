@@ -8,6 +8,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, Navigate } from 'react-router-dom'
 import classes from './CreateBlog.module.css'
+import { createBlog } from '../../../../service/MomintechApi';
 
 
 function CreatePost() {
@@ -19,26 +20,12 @@ function CreatePost() {
     const [body, setBody] = useState('')
 
     const createPostHandler = async () => {
-        try {                        
-             await fetch(`${host}/blog`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: titleRef.current.value,
-                    body: body, 
-                    username: userName
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${isAuth}`
-                }
-            })        
-
+        const data = await createBlog({host, title: titleRef.current.value, userName, body, isAuth})
+        if(data.status){
             alert('Successfully Created a Post')
-            navigate('/blog')
-
-        } catch (e) {
-            alert('Failed to Create Post' + e.message)
+            return navigate('/blog')
         }
+       navigate('/blog')
     }
     const cancelHandler = () => {
         navigate('/blog')
